@@ -11,19 +11,20 @@ if (Get-ADFSRelyingPartyTrust -Identifier $realm) {
 
 $transformRules = @'
   @RuleTemplate = "LdapClaims"
-  @RuleName = "norEduPersonLIN, LiU ID, email address, name, first name, last name as claims"
+  @RuleName = "GUID, UPN, email address, full name, first name, last name, norEduPersonLIN as claims"
   c:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname", Issuer == "AD AUTHORITY"]
     => issue(
       store = "Active Directory",
       types = (
-        "http://liu.se/claims/norEduPersonLIN",
+        "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/privatepersonalidentifier",
         "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier",
         "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress",
         "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
         "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname",
-        "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname"
+        "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname",
+        "http://liu.se/claims/norEduPersonLIN"
       ),
-      query = ";norEduPersonLIN,userPrincipalName,mail,displayName,givenName,sn;{0}",
+      query = ";objectGUID,userPrincipalName,mail,displayName,givenName,sn,norEduPersonLIN;{0}",
       param = c.Value
     );
 '@
