@@ -93,7 +93,7 @@ class ADFSOAuth2(BaseOAuth2):
                     verify_signature=True,
                     verify_exp=True,
                     verify_nbf=False,
-                    verify_iat=True,
+                    verify_iat=self.setting('VERIFY_IAT', True),
                     verify_aud=True,
                     verify_iss=True,
                     require_exp=True,
