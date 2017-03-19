@@ -10,8 +10,8 @@ setup(
     author_email='olle@vidner.se',
     description='',
     install_requires=[
-        'python-social-auth',
         'PyJWT',
         'cryptography',
+        'social-auth-core==1.2.*',
     ]
 )

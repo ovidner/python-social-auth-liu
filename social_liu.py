@@ -5,8 +5,8 @@ from cryptography.x509 import load_der_x509_certificate
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import serialization
 import jwt
-from social.backends.oauth import BaseOAuth2
-from social.exceptions import AuthTokenError
+from social_core.backends.oauth import BaseOAuth2
+from social_core.exceptions import AuthTokenError
 
 
 LIU_X509_CERT = (
