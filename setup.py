@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='social-auth-liu',
-    version='0.0.1',
+    version='0.0.2',
     py_modules=['social_liu'],
     url='https://github.com/ovidner/python-social-auth-liu',
     license='MIT',
